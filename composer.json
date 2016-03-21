@@ -20,6 +20,11 @@
       "hhpack\\servicelocator\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "hhpack\\servicelocator\\spec\\fixtures\\": "spec/fixtures"
+    }
+  },
   "scripts": {
     "test": "vendor/bin/peridot --grep *Spec.hh -c peridot.hh spec",
     "check": "./typecheck"
