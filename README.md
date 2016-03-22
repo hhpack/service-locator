@@ -35,3 +35,10 @@ $locator = ServiceLocator::fromItems([
 $logger = $locator->lookup(Logger::class);
 ```
 
+## Run the test
+
+You can run the test with the following command.
+
+	composer install
+	composer test
+	
