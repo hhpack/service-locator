@@ -17,12 +17,12 @@
   },
   "autoload": {
     "psr-4": {
-      "hhpack\\servicelocator\\": "src/"
+      "hhpack\\service\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "hhpack\\servicelocator\\spec\\fixtures\\": "spec/fixtures"
+      "hhpack\\service\\spec\\fixtures\\": "spec/fixtures"
     }
   },
   "scripts": {

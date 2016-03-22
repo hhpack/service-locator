@@ -1,6 +1,6 @@
 <?hh //strict
 
-namespace hhpack\servicelocator;
+namespace hhpack\service;
 
 interface Service
 {

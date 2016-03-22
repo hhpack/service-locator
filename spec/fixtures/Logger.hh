@@ -1,8 +1,8 @@
 <?hh //strict
 
-namespace hhpack\servicelocator\spec\fixtures;
+namespace hhpack\service\spec\fixtures;
 
-use hhpack\servicelocator\Service;
+use hhpack\service\Service;
 
 final class Logger implements Service
 {

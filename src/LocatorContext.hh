@@ -1,6 +1,6 @@
 <?hh //strict
 
-namespace hhpack\servicelocator;
+namespace hhpack\service;
 
 final class LocatorContext implements Locator<Service>
 {

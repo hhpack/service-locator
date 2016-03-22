@@ -1,12 +1,12 @@
 <?hh //partial
 
-namespace hhpack\servicelocator\spec;
+namespace hhpack\service\spec;
 
-use hhpack\servicelocator\LocatorContext;
-use hhpack\servicelocator\spec\fixtures\Logger;
-use hhpack\servicelocator\spec\fixtures\LoggerFactory;
-use hhpack\servicelocator\spec\fixtures\HttpClient;
-use hhpack\servicelocator\spec\fixtures\HttpClientFactory;
+use hhpack\service\LocatorContext;
+use hhpack\service\spec\fixtures\Logger;
+use hhpack\service\spec\fixtures\LoggerFactory;
+use hhpack\service\spec\fixtures\HttpClient;
+use hhpack\service\spec\fixtures\HttpClientFactory;
 
 describe(LocatorContext::class, function() {
   beforeEach(function() {

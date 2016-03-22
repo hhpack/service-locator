@@ -2,11 +2,11 @@
 
 namespace hhpack\servicelocator\spec;
 
-use hhpack\servicelocator\ServiceLocator;
-use hhpack\servicelocator\spec\fixtures\Logger;
-use hhpack\servicelocator\spec\fixtures\LoggerFactory;
-use hhpack\servicelocator\spec\fixtures\HttpClient;
-use hhpack\servicelocator\spec\fixtures\HttpClientFactory;
+use hhpack\service\ServiceLocator;
+use hhpack\service\spec\fixtures\Logger;
+use hhpack\service\spec\fixtures\LoggerFactory;
+use hhpack\service\spec\fixtures\HttpClient;
+use hhpack\service\spec\fixtures\HttpClientFactory;
 
 describe(ServiceLocator::class, function() {
   beforeEach(function() {
