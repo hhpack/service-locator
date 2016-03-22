@@ -4,8 +4,9 @@ namespace hhpack\servicelocator;
 
 use ReflectionMethod;
 use LogicException;
+use ConstCollection;
 
-final class ServiceContainer
+final class ServiceContainer implements ConstCollection<Pair<string, ServiceFactory<Service>>>
 {
 
     private ImmMap<string, ServiceFactory<Service>> $factories;
@@ -21,6 +22,21 @@ final class ServiceContainer
     {
         $factory = $this->factories->at($name);
         return $factory;
+    }
+
+    public function count() : int
+    {
+        return $this->factories->count();
+    }
+
+    public function isEmpty() : bool
+    {
+        return $this->factories->isEmpty();
+    }
+
+    public function items() : Iterable<Pair<string, ServiceFactory<Service>>>
+    {
+        return $this->factories->items();
     }
 
     private function mapping(Traversable<ServiceFactory<Service>> $factories) : ImmMap<string, ServiceFactory<Service>>

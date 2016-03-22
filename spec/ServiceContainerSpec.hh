@@ -21,4 +21,24 @@ describe(ServiceContainer::class, function() {
       expect($this->container->lookup((string) HttpClient::class))->toBeAnInstanceOf(HttpClientFactory::class);
     });
   });
+  describe('#count', function() {
+    it('returns item count', function () {
+      expect($this->container->count())->toBe(2);
+    });
+  });
+  describe('#isEmpty', function() {
+    context('when not empty', function() {
+      it('returns false', function () {
+        expect($this->container->isEmpty())->toBeFalse();
+      });
+    });
+  });
+  describe('#items', function() {
+    beforeEach(function() {
+      $this->items = ImmMap::fromItems($this->container->items());
+    });
+    it('returns pair item', function () {
+      expect($this->items->count())->toBe(2);
+    });
+  });
 });
