@@ -10,8 +10,8 @@
 Implementing a factory of creating service.
 
 ```hack
-use hhpack\servicelocator\Service;
-use hhpack\servicelocator\ServiceFactory;
+use hhpack\service\Service;
+use hhpack\service\ServiceFactory;
 
 final class Logger implements Service
 {
@@ -29,7 +29,7 @@ final class LoggerFactory implements ServiceFactory<Logger>
 Specify the **ServiceFactory**, to create a service locator.
 
 ```hack
-use hhpack\servicelocator\ServiceLocator;
+use hhpack\service\ServiceLocator;
 
 $locator = ServiceLocator::fromItems([
     new LoggerFactory()
