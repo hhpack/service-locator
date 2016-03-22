@@ -11,8 +11,8 @@ use hhpack\servicelocator\spec\fixtures\HttpClientFactory;
 describe(ServiceContainer::class, function() {
   beforeEach(function() {
     $this->container = new ServiceContainer([
-      Pair { (string) Logger::class, new LoggerFactory() },
-      Pair { (string) HttpClient::class, new HttpClientFactory() }
+      new LoggerFactory(),
+      new HttpClientFactory()
     ]);
   });
   describe('#lookup', function() {

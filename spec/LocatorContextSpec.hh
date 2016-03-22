@@ -11,8 +11,8 @@ use hhpack\servicelocator\spec\fixtures\HttpClientFactory;
 describe(LocatorContext::class, function() {
   beforeEach(function() {
     $this->context = new LocatorContext([
-      Pair { (string) Logger::class, new LoggerFactory() },
-      Pair { (string) HttpClient::class, new HttpClientFactory() }
+      new LoggerFactory(),
+      new HttpClientFactory()
     ]);
   });
   describe('#lookup', function() {

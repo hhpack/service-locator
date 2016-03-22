@@ -8,7 +8,7 @@ final class LocatorContext implements Locator<Service>
     private ServiceContainer $container;
 
     public function __construct(
-        Traversable<Pair<string, ServiceFactory<Service>>> $factories = []
+        Traversable<ServiceFactory<Service>> $factories = []
     )
     {
         $this->container = new ServiceContainer($factories);

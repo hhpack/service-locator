@@ -16,7 +16,7 @@ final class ServiceLocator implements Locator<Service>
         return $this->context->lookup($name);
     }
 
-    public static function fromItems(Traversable<Pair<string, ServiceFactory<Service>>> $factories = []) : this
+    public static function fromItems(Traversable<ServiceFactory<Service>> $factories = []) : this
     {
         return new static(new LocatorContext($factories));
     }
