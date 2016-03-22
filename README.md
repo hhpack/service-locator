@@ -29,6 +29,8 @@ final class LoggerFactory implements ServiceFactory<Logger>
 Specify the **ServiceFactory**, to create a service locator.
 
 ```hack
+use hhpack\servicelocator\ServiceLocator;
+
 $locator = ServiceLocator::fromItems([
     new LoggerFactory()
 ]);
