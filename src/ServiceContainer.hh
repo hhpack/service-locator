@@ -4,9 +4,8 @@ namespace hhpack\servicelocator;
 
 use ReflectionMethod;
 use LogicException;
-use ConstCollection;
 
-final class ServiceContainer implements ConstCollection<Pair<string, ServiceFactory<Service>>>
+final class ServiceContainer implements FactoryContainer
 {
 
     private ImmMap<string, ServiceFactory<Service>> $factories;
