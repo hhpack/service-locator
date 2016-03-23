@@ -16,7 +16,7 @@ describe(ServiceLocator::class, function() {
     ]);
   });
   describe('#lookup', function() {
-    it('returns service factory', function () {
+    it('returns service', function () {
       expect($this->locator->lookup(Logger::class))->toBeAnInstanceOf(Logger::class);
       expect($this->locator->lookup(HttpClient::class))->toBeAnInstanceOf(HttpClient::class);
     });
