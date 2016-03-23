@@ -4,6 +4,7 @@ namespace hhpack\service;
 
 use ReflectionMethod;
 use LogicException;
+use OutOfBoundsException;
 
 final class ServiceContainer implements FactoryContainer
 {
@@ -19,7 +20,12 @@ final class ServiceContainer implements FactoryContainer
 
     public function lookup(string $name) : ServiceFactory<Service>
     {
-        $factory = $this->factories->at($name);
+        try {
+            $factory = $this->factories->at($name);
+        } catch (OutOfBoundsException $reason) {
+            throw new ServiceNotRegisteredException("The service $name is not registered", 0, $reason);
+        }
+
         return $factory;
     }
 
