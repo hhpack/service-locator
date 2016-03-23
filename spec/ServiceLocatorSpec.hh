@@ -1,6 +1,6 @@
 <?hh //partial
 
-namespace hhpack\servicelocator\spec;
+namespace hhpack\service\spec;
 
 use hhpack\service\ServiceLocator;
 use hhpack\service\spec\fixtures\Logger;
