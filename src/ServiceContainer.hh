@@ -58,7 +58,7 @@ final class ServiceContainer implements FactoryContainer
         $type = $method->getReturnType();
 
         if ($type === null) {
-            throw new LogicException();
+            throw new LogicException('The return value can not be void');
         }
 
         return Pair { (string) $type, $factory };
