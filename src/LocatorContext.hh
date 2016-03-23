@@ -25,6 +25,11 @@ final class LocatorContext implements Locator<Service>
         return $service;
     }
 
+    public static function fromItems(Traversable<ServiceFactory<Service>> $factories = []) : this
+    {
+        return new static($factories);
+    }
+
     private function lookupByName(string $name) : Service
     {
         $factory = $this->container->lookup($name);
