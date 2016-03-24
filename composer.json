@@ -10,8 +10,7 @@
   ],
   "license": "MIT",
   "require": {
-    "hhvm": ">= 3.12.0",
-    "fredemmott/definition-finder": "^1.1.0"
+    "hhvm": ">= 3.12.0"
   },
   "require-dev": {
     "expect/peridot-expect-plugin": "~3.0",
