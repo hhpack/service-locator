@@ -10,7 +10,8 @@
   ],
   "license": "MIT",
   "require": {
-    "hhvm": ">= 3.12.0"
+    "hhvm": ">= 3.12.0",
+    "hhpack/package": "~0.11"
   },
   "require-dev": {
     "expect/peridot-expect-plugin": "~3.0",
@@ -24,7 +25,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "hhpack\\service\\spec\\fixtures\\": "spec/fixtures"
+      "hhpack\\service\\spec\\fixtures\\": "spec/fixtures",
+      "hhpack\\service\\example\\": "example"
     }
   },
   "scripts": {

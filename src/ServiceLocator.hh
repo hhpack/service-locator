@@ -21,10 +21,15 @@ final class ServiceLocator implements Locator<Service>
         return new static(new LocatorContext($factories));
     }
 
-    public static function fromModule(classname<FactoryModule> $module) : this
+    public static function fromModuleName(classname<FactoryModule> $module) : this
     {
         $reflection = new \ReflectionClass($module);
-        return static::fromItems( $reflection->newInstance() );
+        return static::fromModule( $reflection->newInstance() );
+    }
+
+    public static function fromModule(FactoryModule $module) : this
+    {
+        return static::fromItems($module);
     }
 
 }

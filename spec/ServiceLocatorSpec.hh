@@ -23,9 +23,9 @@ describe(ServiceLocator::class, function() {
       expect($this->locator->lookup(HttpClient::class))->toBeAnInstanceOf(HttpClient::class);
     });
   });
-  describe('#fromModule', function() {
+  describe('#fromModuleName', function() {
     it('returns locator context instance', function () {
-      $locator = ServiceLocator::fromModule(TestModule::class);
+      $locator = ServiceLocator::fromModuleName(TestModule::class);
       expect($locator->lookup(Logger::class))->toBeAnInstanceOf(Logger::class);
     });
   });
