@@ -31,7 +31,8 @@
   },
   "scripts": {
     "test": "vendor/bin/peridot --grep *Spec.hh -c peridot.hh spec",
-    "check": "./typecheck"
+    "check": "./typecheck",
+    "example": "hhvm ./example/environment.hh"
   },
   "minimum-stability": "stable"
 }
