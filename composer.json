@@ -11,7 +11,7 @@
   "license": "MIT",
   "require": {
     "hhvm": ">= 3.12.0",
-    "hhpack/package": "~0.11"
+    "hhpack/package": "~0.12"
   },
   "require-dev": {
     "expect/peridot-expect-plugin": "~3.0",
