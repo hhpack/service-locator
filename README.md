@@ -13,7 +13,11 @@ Implementing a factory of creating service.
 use hhpack\service\Service;
 use hhpack\service\ServiceFactory;
 
-final class Logger implements Service
+interface Logger implements Service
+{
+}
+
+final class LoggerService implements Logger
 {
 }
 
@@ -21,7 +25,7 @@ final class LoggerFactory implements ServiceFactory<Logger>
 {
     public function createService() : Logger
     {
-        return new Logger();
+        return new LoggerService();
     }
 }
 ```
@@ -36,6 +40,71 @@ $locator = ServiceLocator::fromItems([
 ]);
 $logger = $locator->lookup(Logger::class);
 ```
+
+## Module of service factory
+
+By using the modules that provide **ServiceFactory**, you can generate a new service locator.
+
+```hack
+use hhpack\service\Service;
+use hhpack\service\ServiceFactory;
+use hhpack\service\FactoryModule;
+
+final class CustomModule implements FactoryModule
+{
+
+    public function getIterator() : Iterator<ServiceFactory<Service>>
+    {
+        yield new LoggerFactory();
+    }
+
+}
+```
+
+Using the defined modules, and generates a new service locator.
+
+```hack
+use hhpack\service\ServiceLocator;
+
+$locator = ServiceLocator::fromModule(new CustomModule());
+
+$logger = $locator->lookup(Logger::class);
+$logger->put('logger loaded');
+```
+
+## Module for environment
+
+By using the **EnvironmentModule**, you will be able to load a module based on the setting of **HHVM_ENV**.
+
+When HHVM_ENV is the **production** looks for a module named **Production** from the specified directory.
+
+```hack
+use hhpack\service\ServiceLocator;
+use hhpack\service\EnvironmentModule;
+
+$module = new EnvironmentModule([
+    Pair { 'hhpack\\service\\example\\', __DIR__ } // autoload for module
+]);
+
+$locator = ServiceLocator::fromModule($module);
+
+$logger = $locator->lookup(Logger::class);
+$logger->put('logger loaded');
+```
+
+By executing the **environment.hh** of example, it can be confirmed.
+
+
+* development
+
+		$ HHVM_ENV=development hhvm example/environment.hh
+		$ development - logger loaded
+
+* production
+
+		$ HHVM_ENV=production hhvm example/environment.hh
+		$ production - logger loaded
+
 
 ## Run the test
 
