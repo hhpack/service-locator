@@ -13,7 +13,11 @@ Implementing a factory of creating service.
 use hhpack\service\Service;
 use hhpack\service\ServiceFactory;
 
-final class Logger implements Service
+interface Logger implements Service
+{
+}
+
+final class LoggerService implements Logger
 {
 }
 
@@ -21,7 +25,7 @@ final class LoggerFactory implements ServiceFactory<Logger>
 {
     public function createService() : Logger
     {
-        return new Logger();
+        return new LoggerService();
     }
 }
 ```
@@ -35,6 +39,37 @@ $locator = ServiceLocator::fromItems([
     new LoggerFactory()
 ]);
 $logger = $locator->lookup(Logger::class);
+```
+
+## Module of service factory
+
+By using the modules that provide **ServiceFactory**, you can generate a new service locator.
+
+```hack
+use hhpack\service\Service;
+use hhpack\service\ServiceFactory;
+use hhpack\service\FactoryModule;
+
+final class CustomModule implements FactoryModule
+{
+
+    public function getIterator() : Iterator<ServiceFactory<Service>>
+    {
+        yield new LoggerFactory();
+    }
+
+}
+```
+
+Using the defined modules, and generates a new service locator.
+
+```hack
+use hhpack\service\ServiceLocator;
+
+$locator = ServiceLocator::fromModule(new CustomModule());
+
+$logger = $locator->lookup(Logger::class);
+$logger->put('logger loaded');
 ```
 
 ## Run the test
