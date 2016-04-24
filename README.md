@@ -10,6 +10,7 @@
 Implementing a factory of creating service.
 
 ```hack
+use hhpack\service\Locator;
 use hhpack\service\Service;
 use hhpack\service\ServiceFactory;
 
@@ -23,7 +24,7 @@ final class LoggerService implements Logger
 
 final class LoggerFactory implements ServiceFactory<Logger>
 {
-    public function createService() : Logger
+    public function createService(Locator<Service> $locator) : Logger
     {
         return new LoggerService();
     }
