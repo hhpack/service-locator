@@ -4,5 +4,5 @@ namespace hhpack\service;
 
 interface ServiceFactory<+T as Service>
 {
-    public function createService() : T;
+    public function createService(Locator<Service> $locator) : T;
 }

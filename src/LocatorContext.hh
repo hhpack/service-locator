@@ -33,7 +33,7 @@ final class LocatorContext implements Locator<Service>
     private function lookupByName(string $name) : Service
     {
         $factory = $this->container->lookup($name);
-        return $factory->createService();
+        return $factory->createService($this);
     }
 
 }
