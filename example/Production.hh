@@ -1,10 +1,10 @@
 <?hh //strict
 
-namespace hhpack\service\example;
+namespace HHPack\Service\Example;
 
-use hhpack\service\Service;
-use hhpack\service\ServiceFactory;
-use hhpack\service\FactoryModule;
+use HHPack\Service\Service;
+use HHPack\Service\ServiceFactory;
+use HHPack\Service\FactoryModule;
 
 final class Production implements FactoryModule
 {

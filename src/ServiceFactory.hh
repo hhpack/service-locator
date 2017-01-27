@@ -1,6 +1,6 @@
 <?hh //strict
 
-namespace hhpack\service;
+namespace HHPack\Service;
 
 interface ServiceFactory<+T as Service>
 {
