@@ -1,16 +1,16 @@
 <?hh //partial
 
-namespace hhpack\service\example;
+namespace HHPack\Service\Example;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use hhpack\service\ServiceLocator;
-use hhpack\service\EnvironmentModule;
+use HHPack\Service\ServiceLocator;
+use HHPack\Service\EnvironmentModule;
 
 function main() : void
 {
     $module = new EnvironmentModule([
-        Pair { 'hhpack\\service\\example\\', __DIR__ }
+        Pair { 'HHPack\\Service\\Example\\', __DIR__ }
     ]);
 
     $locator = ServiceLocator::fromModule($module);

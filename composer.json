@@ -11,26 +11,24 @@
   "license": "MIT",
   "require": {
     "hhvm": ">= 3.12.0",
-    "hhpack/package": "~0.12"
+    "hhpack/package": "~1.0"
   },
   "require-dev": {
-    "expect/peridot-expect-plugin": "~3.0",
-    "peridot-php/peridot": "~1.18",
-    "peridot-php/peridot-dot-reporter": "~1.0"
+    "hackpack/hackunit": "^1.0"
   },
   "autoload": {
     "psr-4": {
-      "hhpack\\service\\": "src/"
+      "HHPack\\Service\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "hhpack\\service\\spec\\fixtures\\": "spec/fixtures",
-      "hhpack\\service\\example\\": "example"
+      "HHPack\\Service\\Example\\": "example",
+      "HHPack\\Service\\Test\\Fixtures\\": "test/fixtures"
     }
   },
   "scripts": {
-    "test": "vendor/bin/peridot --grep *Spec.hh -c peridot.hh spec",
+    "test": "vendor/bin/hackunit test",
     "check": "./typecheck",
     "example": "hhvm ./example/environment.hh"
   },

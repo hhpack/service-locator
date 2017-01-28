@@ -1,9 +1,9 @@
 <?hh //strict
 
-namespace hhpack\service;
+namespace HHPack\Service;
 
-use hhpack\package as package;
-use hhpack\package\VendorPackage;
+use HHPack\Package as package;
+use HHPack\Package\VendorPackage;
 use RuntimeException;
 
 final class EnvironmentModule implements FactoryModule

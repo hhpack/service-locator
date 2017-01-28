@@ -10,9 +10,9 @@
 Implementing a factory of creating service.
 
 ```hack
-use hhpack\service\Locator;
-use hhpack\service\Service;
-use hhpack\service\ServiceFactory;
+use HHPack\Service\Locator;
+use HHPack\Service\Service;
+use HHPack\Service\ServiceFactory;
 
 interface Logger implements Service
 {
@@ -34,7 +34,7 @@ final class LoggerFactory implements ServiceFactory<Logger>
 Specify the **ServiceFactory**, to create a service locator.
 
 ```hack
-use hhpack\service\ServiceLocator;
+use HHPack\Service\ServiceLocator;
 
 $locator = ServiceLocator::fromItems([
     new LoggerFactory()
@@ -47,9 +47,9 @@ $logger = $locator->lookup(Logger::class);
 By using the modules that provide **ServiceFactory**, you can generate a new service locator.
 
 ```hack
-use hhpack\service\Service;
-use hhpack\service\ServiceFactory;
-use hhpack\service\FactoryModule;
+use HHPack\Service\Service;
+use HHPack\Service\ServiceFactory;
+use HHPack\Service\FactoryModule;
 
 final class CustomModule implements FactoryModule
 {
@@ -65,7 +65,7 @@ final class CustomModule implements FactoryModule
 Using the defined modules, and generates a new service locator.
 
 ```hack
-use hhpack\service\ServiceLocator;
+use HHPack\Service\ServiceLocator;
 
 $locator = ServiceLocator::fromModule(new CustomModule());
 
@@ -80,11 +80,11 @@ By using the **EnvironmentModule**, you will be able to load a module based on t
 When HHVM_ENV is the **production** looks for a module named **Production** from the specified directory.
 
 ```hack
-use hhpack\service\ServiceLocator;
-use hhpack\service\EnvironmentModule;
+use HHPack\Service\ServiceLocator;
+use HHPack\Service\EnvironmentModule;
 
 $module = new EnvironmentModule([
-    Pair { 'hhpack\\service\\example\\', __DIR__ } // autoload for module
+    Pair { 'HHPack\\Service\\Example\\', __DIR__ } // autoload for module
 ]);
 
 $locator = ServiceLocator::fromModule($module);
@@ -113,4 +113,3 @@ You can run the test with the following command.
 
 	composer install
 	composer test
-	

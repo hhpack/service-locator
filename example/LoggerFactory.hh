@@ -1,11 +1,11 @@
 <?hh //strict
 
-namespace hhpack\service\example;
+namespace HHPack\Service\Example;
 
-use hhpack\service\Locator;
-use hhpack\service\Service;
-use hhpack\service\ServiceFactory;
-use hhpack\service\example\LoggerFactory;
+use HHPack\Service\Locator;
+use HHPack\Service\Service;
+use HHPack\Service\ServiceFactory;
+use HHPack\Service\Example\LoggerFactory;
 
 final class LoggerFactory implements ServiceFactory<Logger>
 {
