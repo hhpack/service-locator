@@ -2,11 +2,7 @@
 
 namespace HHPack\Service\Test\Fixtures;
 
-use HHPack\Service\Service;
-use HHPack\Service\Locator;
-use HHPack\Service\LocatorContext;
-use HHPack\Service\FactoryModule;
-use HHPack\Service\ServiceFactory;
+use HHPack\Service\{ Service, Locator, LocatorContext, FactoryModule, ServiceFactory };
 
 final class TestModule implements FactoryModule
 {
