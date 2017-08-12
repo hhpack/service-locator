@@ -2,9 +2,7 @@
 
 namespace HHPack\Service\Test\Fixtures;
 
-use HHPack\Service\Locator;
-use HHPack\Service\Service;
-use HHPack\Service\ServiceFactory;
+use HHPack\Service\{ Locator, Service, ServiceFactory };
 
 final class LoggerFactory implements ServiceFactory<Logger>
 {

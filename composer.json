@@ -10,8 +10,9 @@
   ],
   "license": "MIT",
   "require": {
-    "hhvm": ">= 3.18.0",
-    "hhpack/package": "^1.1"
+    "hhvm": ">= 3.21.0",
+    "hhpack/package": "^1.1",
+    "facebook/hhvm-autoload": "^1.4"
   },
   "require-dev": {
     "hackpack/hackunit": "^1.1"

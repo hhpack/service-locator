@@ -3,10 +3,7 @@
 namespace HHPack\Service\Test;
 
 use HHPack\Service\ServiceContainer;
-use HHPack\Service\Test\Fixtures\Logger;
-use HHPack\Service\Test\Fixtures\LoggerFactory;
-use HHPack\Service\Test\Fixtures\HttpClient;
-use HHPack\Service\Test\Fixtures\HttpClientFactory;
+use HHPack\Service\Test\Fixtures\{ Logger, LoggerFactory, HttpClient, HttpClientFactory };
 use HackPack\HackUnit\Contract\Assert;
 
 final class ServiceContainerTest
