@@ -13,9 +13,7 @@ namespace HHPack\Service;
 
 use ConstCollection;
 
-interface FactoryContainer
-  extends
-    ConstCollection<Pair<string, this::T>> {
+interface FactoryContainer extends ConstCollection<Pair<string, this::T>> {
 
   abstract const type T;
   public function lookup(string $name): this::T;

@@ -14,9 +14,7 @@ namespace HHPack\Service;
 use IteratorAggregate;
 
 interface FactoryModule
-  extends
-    IteratorAggregate<this::T>,
-    Traversable<this::T> {
+  extends IteratorAggregate<this::T>, Traversable<this::T> {
   const type T = ServiceFactory;
   public function getIterator(): Iterator<this::T>;
 }

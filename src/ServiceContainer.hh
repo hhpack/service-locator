@@ -21,9 +21,7 @@ final class ServiceContainer implements FactoryContainer {
 
   private ImmMap<string, this::T> $factories;
 
-  public function __construct(
-    Traversable<this::T> $factories = [],
-  ) {
+  public function __construct(Traversable<this::T> $factories = []) {
     $this->factories = $this->mapping($factories);
   }
 
@@ -63,9 +61,7 @@ final class ServiceContainer implements FactoryContainer {
     return ImmMap::fromItems($items);
   }
 
-  private function pairOfFactory(
-    this::T $factory,
-  ): Pair<string, this::T> {
+  private function pairOfFactory(this::T $factory): Pair<string, this::T> {
     $method = new ReflectionMethod($factory, 'createService');
     $type = $method->getReturnType();
 
