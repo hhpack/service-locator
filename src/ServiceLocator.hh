@@ -15,7 +15,7 @@ final class ServiceLocator implements Locator {
 
   private CacheContainer $cacheManager;
 
-  public function __construct(private Locator $context) {
+  public function __construct(private ServiceContainer $container) {
     $this->cacheManager = new CacheContainer();
   }
 
@@ -23,16 +23,29 @@ final class ServiceLocator implements Locator {
     if ($this->cacheManager->has($name)) {
       return $this->cacheManager->get($name);
     }
-    $service = $this->context->lookup($name);
+
+    $service = $this->lookupByName((string) $name);
+
+    if (!($service instanceof $name)) {
+      throw new InvalidServiceException(
+        "It is not in the service $name are expecting",
+      );
+    }
+
     $this->cacheManager->set($name, $service);
 
     return $service;
   }
 
+  private function lookupByName(string $name): this::T {
+    $factory = $this->container->lookup($name);
+    return $factory->createService($this);
+  }
+
   public static function fromItems(
     Traversable<ServiceFactory> $factories = [],
   ): this {
-    return new static(new LocatorContext($factories));
+    return new static(new ServiceContainer($factories));
   }
 
   public static function fromModuleName(
