@@ -2,6 +2,4 @@
 
 namespace HHPack\Service;
 
-interface Service
-{
-}
+interface Service {}

@@ -2,7 +2,6 @@
 
 namespace HHPack\Service;
 
-interface KeyAccess<T>
-{
-    public function lookup(string $name) : T;
+interface KeyAccess<T> {
+  public function lookup(string $name): T;
 }
