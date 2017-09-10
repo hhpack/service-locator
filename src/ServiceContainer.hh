@@ -17,15 +17,17 @@ use OutOfBoundsException;
 
 final class ServiceContainer implements FactoryContainer {
 
-  private ImmMap<string, ServiceFactory<Service>> $factories;
+  const type T = ServiceFactory;
+
+  private ImmMap<string, this::T> $factories;
 
   public function __construct(
-    Traversable<ServiceFactory<Service>> $factories = [],
+    Traversable<this::T> $factories = [],
   ) {
     $this->factories = $this->mapping($factories);
   }
 
-  public function lookup(string $name): ServiceFactory<Service> {
+  public function lookup(string $name): this::T {
     try {
       $factory = $this->factories->at($name);
     } catch (OutOfBoundsException $reason) {
@@ -47,13 +49,13 @@ final class ServiceContainer implements FactoryContainer {
     return $this->factories->isEmpty();
   }
 
-  public function items(): Iterable<Pair<string, ServiceFactory<Service>>> {
+  public function items(): Iterable<Pair<string, this::T>> {
     return $this->factories->items();
   }
 
   private function mapping(
-    Traversable<ServiceFactory<Service>> $factories,
-  ): ImmMap<string, ServiceFactory<Service>> {
+    Traversable<this::T> $factories,
+  ): ImmMap<string, this::T> {
     $items =
       ImmVector::fromItems($factories)
         ->map(($factory) ==> $this->pairOfFactory($factory));
@@ -62,8 +64,8 @@ final class ServiceContainer implements FactoryContainer {
   }
 
   private function pairOfFactory(
-    ServiceFactory<Service> $factory,
-  ): Pair<string, ServiceFactory<Service>> {
+    this::T $factory,
+  ): Pair<string, this::T> {
     $method = new ReflectionMethod($factory, 'createService');
     $type = $method->getReturnType();
 

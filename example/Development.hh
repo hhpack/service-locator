@@ -9,7 +9,7 @@ use HHPack\Service\FactoryModule;
 final class Development implements FactoryModule
 {
 
-    public function getIterator() : Iterator<ServiceFactory<Service>>
+    public function getIterator() : Iterator<ServiceFactory>
     {
         yield new LoggerFactory('development');
     }

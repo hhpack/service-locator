@@ -11,6 +11,7 @@
 
 namespace HHPack\Service;
 
-interface ServiceFactory<+T as Service> {
-  public function createService(Locator $locator): T;
+interface ServiceFactory {
+  abstract const type T as Service;
+  public function createService(Locator $locator): this::T;
 }

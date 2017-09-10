@@ -7,8 +7,10 @@ use HHPack\Service\Service;
 use HHPack\Service\ServiceFactory;
 use HHPack\Service\Example\LoggerFactory;
 
-final class LoggerFactory implements ServiceFactory<Logger>
+final class LoggerFactory implements ServiceFactory
 {
+
+    const type T = Logger;
 
     public function __construct(private string $prefix)
     {

@@ -15,17 +15,19 @@ use OutOfBoundsException;
 
 final class CacheContainer implements CacheManager {
 
-  private Map<string, Service> $services;
+  const type T = Service;
+
+  private Map<string, this::T> $services;
 
   public function __construct() {
     $this->services = Map {};
   }
 
-  public function has<Tu as Service>(classname<Tu> $name): bool {
+  public function has<Tu as this::T>(classname<Tu> $name): bool {
     return $this->services->containsKey((string) $name);
   }
 
-  public function get<Tu as Service>(classname<Tu> $name): Tu {
+  public function get<Tu as this::T>(classname<Tu> $name): Tu {
     $service = $this->services->at((string) $name);
 
     if (!($service instanceof $name)) {
@@ -37,7 +39,7 @@ final class CacheContainer implements CacheManager {
     return $service;
   }
 
-  public function set<Tu as Service>(classname<Tu> $name, Tu $service): void {
+  public function set<Tu as this::T>(classname<Tu> $name, Tu $service): void {
     $this->services->set((string) $name, $service);
   }
 

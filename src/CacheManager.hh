@@ -12,7 +12,8 @@
 namespace HHPack\Service;
 
 interface CacheManager {
-  public function has<Tu as Service>(classname<Tu> $name): bool;
-  public function get<Tu as Service>(classname<Tu> $name): Tu;
-  public function set<Tu as Service>(classname<Tu> $name, Tu $service): void;
+  abstract const type T;
+  public function has<Tu as this::T>(classname<Tu> $name): bool;
+  public function get<Tu as this::T>(classname<Tu> $name): Tu;
+  public function set<Tu as this::T>(classname<Tu> $name, Tu $service): void;
 }

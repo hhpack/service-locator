@@ -13,13 +13,13 @@ namespace HHPack\Service;
 
 final class ServiceLocator implements Locator {
 
-  private CacheManager $cacheManager;
+  private CacheContainer $cacheManager;
 
   public function __construct(private Locator $context) {
     $this->cacheManager = new CacheContainer();
   }
 
-  public function lookup<Tu as Service>(classname<Tu> $name): Tu {
+  public function lookup<Tu as this::T>(classname<Tu> $name): Tu {
     if ($this->cacheManager->has($name)) {
       return $this->cacheManager->get($name);
     }
@@ -30,7 +30,7 @@ final class ServiceLocator implements Locator {
   }
 
   public static function fromItems(
-    Traversable<ServiceFactory<Service>> $factories = [],
+    Traversable<ServiceFactory> $factories = [],
   ): this {
     return new static(new LocatorContext($factories));
   }

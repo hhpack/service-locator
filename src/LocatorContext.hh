@@ -16,12 +16,12 @@ final class LocatorContext implements Locator {
   private ServiceContainer $container;
 
   public function __construct(
-    Traversable<ServiceFactory<Service>> $factories = [],
+    Traversable<ServiceFactory> $factories = [],
   ) {
     $this->container = new ServiceContainer($factories);
   }
 
-  public function lookup<Tu as Service>(classname<Tu> $name): Tu {
+  public function lookup<Tu as this::T>(classname<Tu> $name): Tu {
     $service = $this->lookupByName((string) $name);
 
     if (!($service instanceof $name)) {
@@ -34,12 +34,12 @@ final class LocatorContext implements Locator {
   }
 
   public static function fromItems(
-    Traversable<ServiceFactory<Service>> $factories = [],
+    Traversable<ServiceFactory> $factories = [],
   ): this {
     return new static($factories);
   }
 
-  private function lookupByName(string $name): Service {
+  private function lookupByName(string $name): this::T {
     $factory = $this->container->lookup($name);
     return $factory->createService($this);
   }

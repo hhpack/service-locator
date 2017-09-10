@@ -15,7 +15,8 @@ use IteratorAggregate;
 
 interface FactoryModule
   extends
-    IteratorAggregate<ServiceFactory<Service>>,
-    Traversable<ServiceFactory<Service>> {
-  public function getIterator(): Iterator<ServiceFactory<Service>>;
+    IteratorAggregate<this::T>,
+    Traversable<this::T> {
+  const type T = ServiceFactory;
+  public function getIterator(): Iterator<this::T>;
 }

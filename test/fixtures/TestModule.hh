@@ -12,7 +12,7 @@ use HHPack\Service\{
 
 final class TestModule implements FactoryModule {
 
-  public function getIterator(): Iterator<ServiceFactory<Service>> {
+  public function getIterator(): Iterator<ServiceFactory> {
     yield new LoggerFactory();
   }
 

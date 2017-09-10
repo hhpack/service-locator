@@ -23,7 +23,7 @@ final class EnvironmentModule implements FactoryModule {
     $this->package = VendorPackage::fromItems($namespaces);
   }
 
-  public function getIterator(): Iterator<ServiceFactory<Service>> {
+  public function getIterator(): Iterator<this::T> {
     $environment = getenv('HHVM_ENV') ? getenv('HHVM_ENV') : 'development';
 
     $module =
