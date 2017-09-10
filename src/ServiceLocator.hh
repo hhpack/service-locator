@@ -11,11 +11,11 @@
 
 namespace HHPack\Service;
 
-final class ServiceLocator implements Locator<Service> {
+final class ServiceLocator implements Locator {
 
   private CacheManager $cacheManager;
 
-  public function __construct(private Locator<Service> $context) {
+  public function __construct(private Locator $context) {
     $this->cacheManager = new CacheContainer();
   }
 

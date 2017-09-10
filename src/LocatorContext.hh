@@ -11,7 +11,7 @@
 
 namespace HHPack\Service;
 
-final class LocatorContext implements Locator<Service> {
+final class LocatorContext implements Locator {
 
   private ServiceContainer $container;
 
