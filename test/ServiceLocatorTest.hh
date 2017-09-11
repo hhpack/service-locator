@@ -1,9 +1,9 @@
 <?hh //strict
 
-namespace HHPack\Service\Test;
+namespace HHPack\ServiceLocator\Test;
 
-use HHPack\Service\{ServiceLocator};
-use HHPack\Service\Test\Fixtures\{
+use HHPack\ServiceLocator\{ServiceLocator};
+use HHPack\ServiceLocator\Test\Fixtures\{
   TestModule,
   Logger,
   LoggerFactory,

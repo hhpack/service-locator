@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service\Module;
+namespace HHPack\ServiceLocator\Module;
 
-use HHPack\Service\{Module};
+use HHPack\ServiceLocator\{Module};
 use HHPack\Package as package;
 use HHPack\Package\VendorPackage;
 use RuntimeException;

@@ -1,8 +1,8 @@
 <?hh //strict
 
-namespace HHPack\Service\Test\Fixtures;
+namespace HHPack\ServiceLocator\Test\Fixtures;
 
-use HHPack\Service\{Module, ServiceFactory};
+use HHPack\ServiceLocator\{Module, ServiceFactory};
 
 final class TestModule implements Module {
 

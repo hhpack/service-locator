@@ -1,8 +1,8 @@
 <?hh //strict
 
-namespace HHPack\Service\Test\Fixtures;
+namespace HHPack\ServiceLocator\Test\Fixtures;
 
-use HHPack\Service\{Locator, Service, ServiceFactory};
+use HHPack\ServiceLocator\{Locator, Service, ServiceFactory};
 
 final class HttpClientFactory implements ServiceFactory {
   const type T = HttpClient;

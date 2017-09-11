@@ -1,8 +1,8 @@
 <?hh //strict
 
-namespace HHPack\Service\Example;
+namespace HHPack\ServiceLocator\Example;
 
-use HHPack\Service\{Service, ServiceFactory, Module};
+use HHPack\ServiceLocator\{Service, ServiceFactory, Module};
 
 final class Development implements Module {
 

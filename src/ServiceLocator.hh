@@ -9,10 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator;
 
-use HHPack\Service\Cache\{CacheContainer};
-use HHPack\Service\Registry\{ServiceRegistry};
+use HHPack\ServiceLocator\Cache\{CacheContainer};
+use HHPack\ServiceLocator\Registry\{ServiceRegistry};
 
 final class ServiceLocator implements Locator {
   const type T = Service;

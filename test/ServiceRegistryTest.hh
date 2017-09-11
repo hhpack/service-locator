@@ -1,9 +1,9 @@
 <?hh //strict
 
-namespace HHPack\Service\Test;
+namespace HHPack\ServiceLocator\Test;
 
-use HHPack\Service\Registry\{ServiceRegistry};
-use HHPack\Service\Test\Fixtures\{
+use HHPack\ServiceLocator\Registry\{ServiceRegistry};
+use HHPack\ServiceLocator\Test\Fixtures\{
   Logger,
   LoggerFactory,
   HttpClient,

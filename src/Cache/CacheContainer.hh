@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service\Cache;
+namespace HHPack\ServiceLocator\Cache;
 
-use HHPack\Service\{Service, CacheManager, InvalidServiceException};
+use HHPack\ServiceLocator\{Service, CacheManager, InvalidServiceException};
 use OutOfBoundsException;
 
 final class CacheContainer implements CacheManager {

@@ -1,11 +1,11 @@
 <?hh //partial
 
-namespace HHPack\Service\Example;
+namespace HHPack\ServiceLocator\Example;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use HHPack\Service\{ServiceLocator};
-use HHPack\Service\Module\{EnvironmentModule};
+use HHPack\ServiceLocator\{ServiceLocator};
+use HHPack\ServiceLocator\Module\{EnvironmentModule};
 
 function main(): void {
   $module =

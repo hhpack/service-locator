@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator;
 
-use HHPack\Service\{ServiceFactory};
+use HHPack\ServiceLocator\{ServiceFactory};
 use IteratorAggregate;
 
 interface Module extends IteratorAggregate<this::T>, Traversable<this::T> {

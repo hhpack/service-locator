@@ -1,8 +1,8 @@
 <?hh //strict
 
-namespace HHPack\Service\Example;
+namespace HHPack\ServiceLocator\Example;
 
-use HHPack\Service\Service;
+use HHPack\ServiceLocator\Service;
 
 final class LoggerService implements Logger {
 

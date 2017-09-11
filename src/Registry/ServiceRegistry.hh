@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service\Registry;
+namespace HHPack\ServiceLocator\Registry;
 
-use HHPack\Service\{ObjectRegistry, ServiceFactory};
+use HHPack\ServiceLocator\{ObjectRegistry, ServiceFactory};
 use ReflectionClass;
 use LogicException;
 use OutOfBoundsException;
