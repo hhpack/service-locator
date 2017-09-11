@@ -10,9 +10,7 @@
 Implementing a factory of creating service.
 
 ```hack
-use HHPack\Service\Locator;
-use HHPack\Service\Service;
-use HHPack\Service\ServiceFactory;
+use HHPack\ServiceLocator\{ Service, ServiceFactory, Locator };
 
 interface Logger implements Service
 {
@@ -22,19 +20,19 @@ final class LoggerService implements Logger
 {
 }
 
-final class LoggerFactory implements ServiceFactory<Logger>
-{
-    public function createService(Locator<Service> $locator) : Logger
-    {
-        return new LoggerService();
-    }
+final class LoggerFactory implements ServiceFactory {
+  const type T = Logger;
+
+  public function createService(Locator $locator): this::T {
+    return new Logger();
+  }
 }
 ```
 
 Specify the **ServiceFactory**, to create a service locator.
 
 ```hack
-use HHPack\Service\ServiceLocator;
+use HHPack\ServiceLocator\ServiceLocator;
 
 $locator = ServiceLocator::fromItems([
     new LoggerFactory()
@@ -47,14 +45,12 @@ $logger = $locator->lookup(Logger::class);
 By using the modules that provide **ServiceFactory**, you can generate a new service locator.
 
 ```hack
-use HHPack\Service\Service;
-use HHPack\Service\ServiceFactory;
-use HHPack\Service\FactoryModule;
+use HHPack\ServiceLocator\{ ServiceFactory, Module };
 
-final class CustomModule implements FactoryModule
+final class CustomModule implements Module
 {
 
-    public function getIterator() : Iterator<ServiceFactory<Service>>
+    public function getIterator() : Iterator<ServiceFactory>
     {
         yield new LoggerFactory();
     }
@@ -65,7 +61,7 @@ final class CustomModule implements FactoryModule
 Using the defined modules, and generates a new service locator.
 
 ```hack
-use HHPack\Service\ServiceLocator;
+use HHPack\ServiceLocator\ServiceLocator;
 
 $locator = ServiceLocator::fromModule(new CustomModule());
 
@@ -80,8 +76,8 @@ By using the **EnvironmentModule**, you will be able to load a module based on t
 When HHVM_ENV is the **production** looks for a module named **Production** from the specified directory.
 
 ```hack
-use HHPack\Service\ServiceLocator;
-use HHPack\Service\EnvironmentModule;
+use HHPack\ServiceLocator\ServiceLocator;
+use HHPack\ServiceLocator\Module\EnvironmentModule;
 
 $module = new EnvironmentModule([
     Pair { 'HHPack\\Service\\Example\\', __DIR__ } // autoload for module

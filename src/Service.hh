@@ -9,6 +9,6 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator;
 
 interface Service {}

@@ -1,17 +1,13 @@
 <?hh //strict
 
-namespace HHPack\Service\Example;
+namespace HHPack\ServiceLocator\Example;
 
-use HHPack\Service\Service;
-use HHPack\Service\ServiceFactory;
-use HHPack\Service\FactoryModule;
+use HHPack\ServiceLocator\{Service, ServiceFactory, Module};
 
-final class Development implements FactoryModule
-{
+final class Development implements Module {
 
-    public function getIterator() : Iterator<ServiceFactory<Service>>
-    {
-        yield new LoggerFactory('development');
-    }
+  public function getIterator(): Iterator<ServiceFactory> {
+    yield new LoggerFactory('development');
+  }
 
 }

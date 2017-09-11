@@ -9,13 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator;
 
+use HHPack\ServiceLocator\{ServiceFactory};
 use IteratorAggregate;
 
-interface FactoryModule
-  extends
-    IteratorAggregate<ServiceFactory<Service>>,
-    Traversable<ServiceFactory<Service>> {
-  public function getIterator(): Iterator<ServiceFactory<Service>>;
+interface Module extends IteratorAggregate<this::T>, Traversable<this::T> {
+  const type T = ServiceFactory;
+  public function getIterator(): Iterator<this::T>;
 }

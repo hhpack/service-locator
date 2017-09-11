@@ -1,7 +1,7 @@
 <?hh //strict
 
-namespace HHPack\Service\Test\Fixtures;
+namespace HHPack\ServiceLocator\Test\Fixtures;
 
-use HHPack\Service\Service;
+use HHPack\ServiceLocator\Service;
 
 final class HttpClient implements Service {}

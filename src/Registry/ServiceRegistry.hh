@@ -9,23 +9,23 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator\Registry;
 
-use ReflectionMethod;
+use HHPack\ServiceLocator\{ObjectRegistry, ServiceFactory};
+use ReflectionClass;
 use LogicException;
 use OutOfBoundsException;
 
-final class ServiceContainer implements FactoryContainer {
+final class ServiceRegistry implements ObjectRegistry {
+  const type T = ServiceFactory;
 
-  private ImmMap<string, ServiceFactory<Service>> $factories;
+  private ImmMap<string, this::T> $factories;
 
-  public function __construct(
-    Traversable<ServiceFactory<Service>> $factories = [],
-  ) {
+  public function __construct(Traversable<this::T> $factories = []) {
     $this->factories = $this->mapping($factories);
   }
 
-  public function lookup(string $name): ServiceFactory<Service> {
+  public function lookup(string $name): this::T {
     try {
       $factory = $this->factories->at($name);
     } catch (OutOfBoundsException $reason) {
@@ -47,13 +47,13 @@ final class ServiceContainer implements FactoryContainer {
     return $this->factories->isEmpty();
   }
 
-  public function items(): Iterable<Pair<string, ServiceFactory<Service>>> {
+  public function items(): Iterable<Pair<string, this::T>> {
     return $this->factories->items();
   }
 
   private function mapping(
-    Traversable<ServiceFactory<Service>> $factories,
-  ): ImmMap<string, ServiceFactory<Service>> {
+    Traversable<this::T> $factories,
+  ): ImmMap<string, this::T> {
     $items =
       ImmVector::fromItems($factories)
         ->map(($factory) ==> $this->pairOfFactory($factory));
@@ -61,11 +61,9 @@ final class ServiceContainer implements FactoryContainer {
     return ImmMap::fromItems($items);
   }
 
-  private function pairOfFactory(
-    ServiceFactory<Service> $factory,
-  ): Pair<string, ServiceFactory<Service>> {
-    $method = new ReflectionMethod($factory, 'createService');
-    $type = $method->getReturnType();
+  private function pairOfFactory(this::T $factory): Pair<string, this::T> {
+    $class = new ReflectionClass($factory);
+    $type = $class->getTypeConstant('T')->getAssignedTypeText();
 
     if ($type === null) {
       throw new LogicException('The return value can not be void');

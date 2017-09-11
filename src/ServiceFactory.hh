@@ -9,8 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator;
 
-interface ServiceFactory<+T as Service> {
-  public function createService(Locator<Service> $locator): T;
+interface ServiceFactory {
+  abstract const type T as Service;
+  public function createService(Locator $locator): this::T;
 }

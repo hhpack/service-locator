@@ -1,11 +1,13 @@
 <?hh //strict
 
-namespace HHPack\Service\Test\Fixtures;
+namespace HHPack\ServiceLocator\Test\Fixtures;
 
-use HHPack\Service\{Locator, Service, ServiceFactory};
+use HHPack\ServiceLocator\{Locator, Service, ServiceFactory};
 
-final class HttpClientFactory implements ServiceFactory<HttpClient> {
-  public function createService(Locator<Service> $locator): HttpClient {
+final class HttpClientFactory implements ServiceFactory {
+  const type T = HttpClient;
+
+  public function createService(Locator $locator): this::T {
     return new HttpClient();
   }
 }

@@ -9,8 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator;
 
-use RuntimeException;
+use ConstCollection;
 
-final class ServiceNotRegisteredException extends RuntimeException {}
+interface ObjectRegistry extends ConstCollection<Pair<string, this::T>> {
+
+  abstract const type T;
+  public function lookup(string $name): this::T;
+}

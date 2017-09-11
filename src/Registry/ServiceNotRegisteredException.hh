@@ -9,8 +9,8 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator\Registry;
 
-interface KeyAccess<T> {
-  public function lookup(string $name): T;
-}
+use RuntimeException;
+
+final class ServiceNotRegisteredException extends RuntimeException {}
