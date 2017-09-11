@@ -2,10 +2,7 @@
 
 namespace HHPack\Service\Test\Fixtures;
 
-use HHPack\Service\{
-  Module,
-  ServiceFactory
-};
+use HHPack\Service\{Module, ServiceFactory};
 
 final class TestModule implements Module {
 

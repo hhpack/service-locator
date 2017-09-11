@@ -11,7 +11,7 @@
 
 namespace HHPack\Service\Registry;
 
-use HHPack\Service\{ObjectRegistry,ServiceFactory};
+use HHPack\Service\{ObjectRegistry, ServiceFactory};
 use ReflectionClass;
 use LogicException;
 use OutOfBoundsException;

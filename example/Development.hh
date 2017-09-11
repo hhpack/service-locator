@@ -2,7 +2,7 @@
 
 namespace HHPack\Service\Example;
 
-use HHPack\Service\{ Service, ServiceFactory, Module };
+use HHPack\Service\{Service, ServiceFactory, Module};
 
 final class Development implements Module {
 

@@ -13,17 +13,14 @@ use HackPack\HackUnit\Contract\Assert;
 
 final class ServiceRegistryTest {
 
-  public function __construct(private ServiceRegistry $container){}
+  public function __construct(private ServiceRegistry $container) {}
 
   <<SuiteProvider('Factories')>>
-  public static function createByItems() : this
-  {
+  public static function createByItems(): this {
     $container =
       new ServiceRegistry([new LoggerFactory(), new HttpClientFactory()]);
-      return new static($container);
+    return new static($container);
   }
-
-
 
   <<Test('Factories')>>
   public function container(Assert $assert): void {

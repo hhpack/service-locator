@@ -11,7 +11,7 @@
 
 namespace HHPack\Service\Cache;
 
-use HHPack\Service\{Service,CacheManager,InvalidServiceException};
+use HHPack\Service\{Service, CacheManager, InvalidServiceException};
 use OutOfBoundsException;
 
 final class CacheContainer implements CacheManager {

@@ -52,9 +52,7 @@ final class ServiceLocator implements Locator {
     return new static(new ServiceRegistry($factories));
   }
 
-  public static function fromModuleName(
-    classname<Module> $module,
-  ): this {
+  public static function fromModuleName(classname<Module> $module): this {
     $reflection = new \ReflectionClass($module);
     return static::fromModule($reflection->newInstance());
   }
