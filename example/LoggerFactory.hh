@@ -13,7 +13,7 @@ final class LoggerFactory implements ServiceFactory {
 
   public function __construct(private string $prefix) {}
 
-  public function createService(Locator $locator): Logger {
+  public function createService(Locator $locator): this::T {
     return new LoggerService($this->prefix);
   }
 

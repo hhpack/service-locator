@@ -11,6 +11,7 @@
 
 namespace HHPack\Service;
 
-interface Locator extends Locatable {
-  const type T = Service;
+interface Locator {
+  abstract const type T as Service;
+  public function lookup<Tu as this::T>(classname<Tu> $name): Tu;
 }

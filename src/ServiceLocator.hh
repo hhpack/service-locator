@@ -11,11 +11,15 @@
 
 namespace HHPack\Service;
 
+use HHPack\Service\Cache\{CacheContainer};
+use HHPack\Service\Registry\{ServiceRegistry};
+
 final class ServiceLocator implements Locator {
+  const type T = Service;
 
   private CacheContainer $cacheManager;
 
-  public function __construct(private ServiceContainer $container) {
+  public function __construct(private ServiceRegistry $container) {
     $this->cacheManager = new CacheContainer();
   }
 
@@ -45,17 +49,17 @@ final class ServiceLocator implements Locator {
   public static function fromItems(
     Traversable<ServiceFactory> $factories = [],
   ): this {
-    return new static(new ServiceContainer($factories));
+    return new static(new ServiceRegistry($factories));
   }
 
   public static function fromModuleName(
-    classname<FactoryModule> $module,
+    classname<Module> $module,
   ): this {
     $reflection = new \ReflectionClass($module);
     return static::fromModule($reflection->newInstance());
   }
 
-  public static function fromModule(FactoryModule $module): this {
+  public static function fromModule(Module $module): this {
     return static::fromItems($module);
   }
 

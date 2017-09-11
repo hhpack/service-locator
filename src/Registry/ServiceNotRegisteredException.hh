@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\Service\Registry;
 
 use RuntimeException;
 

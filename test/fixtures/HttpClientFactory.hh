@@ -7,7 +7,7 @@ use HHPack\Service\{Locator, Service, ServiceFactory};
 final class HttpClientFactory implements ServiceFactory {
   const type T = HttpClient;
 
-  public function createService(Locator $locator): HttpClient {
+  public function createService(Locator $locator): this::T {
     return new HttpClient();
   }
 }

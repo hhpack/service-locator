@@ -3,14 +3,11 @@
 namespace HHPack\Service\Test\Fixtures;
 
 use HHPack\Service\{
-  Service,
-  Locator,
-  LocatorContext,
-  FactoryModule,
+  Module,
   ServiceFactory
 };
 
-final class TestModule implements FactoryModule {
+final class TestModule implements Module {
 
   public function getIterator(): Iterator<ServiceFactory> {
     yield new LoggerFactory();

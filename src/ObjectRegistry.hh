@@ -11,7 +11,10 @@
 
 namespace HHPack\Service;
 
-interface Locatable {
+use ConstCollection;
+
+interface ObjectRegistry extends ConstCollection<Pair<string, this::T>> {
+
   abstract const type T;
-  public function lookup<Tu as this::T>(classname<Tu> $name): Tu;
+  public function lookup(string $name): this::T;
 }

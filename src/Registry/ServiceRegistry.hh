@@ -9,14 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\Service\Registry;
 
-use ReflectionMethod;
+use HHPack\Service\{ObjectRegistry,ServiceFactory};
+use ReflectionClass;
 use LogicException;
 use OutOfBoundsException;
 
-final class ServiceContainer implements FactoryContainer {
-
+final class ServiceRegistry implements ObjectRegistry {
   const type T = ServiceFactory;
 
   private ImmMap<string, this::T> $factories;
@@ -62,8 +62,8 @@ final class ServiceContainer implements FactoryContainer {
   }
 
   private function pairOfFactory(this::T $factory): Pair<string, this::T> {
-    $method = new ReflectionMethod($factory, 'createService');
-    $type = $method->getReturnType();
+    $class = new ReflectionClass($factory);
+    $type = $class->getTypeConstant('T')->getAssignedTypeText();
 
     if ($type === null) {
       throw new LogicException('The return value can not be void');
