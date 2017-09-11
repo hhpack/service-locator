@@ -9,13 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator\Module;
 
+use HHPack\ServiceLocator\{Module};
 use HHPack\Package as package;
 use HHPack\Package\VendorPackage;
 use RuntimeException;
 
-final class EnvironmentModule implements FactoryModule {
+final class EnvironmentModule implements Module {
 
   private VendorPackage $package;
 
@@ -23,12 +24,12 @@ final class EnvironmentModule implements FactoryModule {
     $this->package = VendorPackage::fromItems($namespaces);
   }
 
-  public function getIterator(): Iterator<ServiceFactory<Service>> {
+  public function getIterator(): Iterator<this::T> {
     $environment = getenv('HHVM_ENV') ? getenv('HHVM_ENV') : 'development';
 
     $module =
       $this->package
-        ->classes(package\implementsInterface(FactoryModule::class))
+        ->classes(package\implementsInterface(Module::class))
         ->filter(package\startsWith(ucfirst($environment)))
         ->firstValue();
 

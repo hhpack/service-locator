@@ -1,7 +1,7 @@
 {
   "name": "hhpack/service-locator",
-  "keywords": [ "lightweight", "service locator", "hack", "container", "service", "registry" ],
-  "description": "Lightweight service locator for Hack",
+  "keywords": [ "service locator", "hack", "container", "service", "registry" ],
+  "description": "Service locator for Hack",
   "authors": [
     {
       "name": "Noritaka Horio",
@@ -19,13 +19,13 @@
   },
   "autoload": {
     "psr-4": {
-      "HHPack\\Service\\": "src/"
+      "HHPack\\ServiceLocator\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "HHPack\\Service\\Example\\": "example",
-      "HHPack\\Service\\Test\\Fixtures\\": "test/fixtures"
+      "HHPack\\ServiceLocator\\Example\\": "example",
+      "HHPack\\ServiceLocator\\Test\\Fixtures\\": "test/fixtures"
     }
   },
   "scripts": {

@@ -1,9 +1,9 @@
 <?hh //strict
 
-namespace HHPack\Service\Test;
+namespace HHPack\ServiceLocator\Test;
 
-use HHPack\Service\{ServiceLocator, LocatorContext};
-use HHPack\Service\Test\Fixtures\{
+use HHPack\ServiceLocator\{ServiceLocator};
+use HHPack\ServiceLocator\Test\Fixtures\{
   TestModule,
   Logger,
   LoggerFactory,
@@ -13,19 +13,34 @@ use HHPack\Service\Test\Fixtures\{
 use HackPack\HackUnit\Contract\Assert;
 
 final class ServiceLocatorTest {
-  <<Test>>
-  public function lookupByClassName(Assert $assert): void {
+
+  public function __construct(private ServiceLocator $locator) {}
+
+  <<SuiteProvider('Factories')>>
+  public static function createByItems(): this {
     $locator = ServiceLocator::fromItems(
       [new LoggerFactory(), new HttpClientFactory()],
     );
-    $assert->mixed($locator->lookup(Logger::class))->isTypeOf(Logger::class);
-    $assert->mixed($locator->lookup(HttpClient::class))
+    return new static($locator);
+  }
+
+  <<SuiteProvider('TestModule')>>
+  public static function createByModule(): this {
+    $locator = ServiceLocator::fromModuleName(TestModule::class);
+    return new static($locator);
+  }
+
+  <<Test('Factories')>>
+  public function lookupByClassName(Assert $assert): void {
+    $assert->mixed($this->locator->lookup(Logger::class))
+      ->isTypeOf(Logger::class);
+    $assert->mixed($this->locator->lookup(HttpClient::class))
       ->isTypeOf(HttpClient::class);
   }
 
-  <<Test>>
+  <<Test('TestModule')>>
   public function fromModuleName(Assert $assert): void {
-    $locator = ServiceLocator::fromModuleName(TestModule::class);
-    $assert->mixed($locator->lookup(Logger::class))->isTypeOf(Logger::class);
+    $assert->mixed($this->locator->lookup(Logger::class))
+      ->isTypeOf(Logger::class);
   }
 }

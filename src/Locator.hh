@@ -9,8 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\Service;
+namespace HHPack\ServiceLocator;
 
-interface Locator<T> {
-  public function lookup<Tu as T>(classname<Tu> $name): Tu;
+interface Locator {
+  abstract const type T as Service;
+  public function lookup<Tu as this::T>(classname<Tu> $name): Tu;
 }

@@ -1,19 +1,15 @@
 <?hh //strict
 
-namespace HHPack\Service\Example;
+namespace HHPack\ServiceLocator\Example;
 
-use HHPack\Service\Service;
+use HHPack\ServiceLocator\Service;
 
-final class LoggerService implements Logger
-{
+final class LoggerService implements Logger {
 
-    public function __construct(private string $prefix)
-    {
-    }
+  public function __construct(private string $prefix) {}
 
-    public function put(string $message) : void
-    {
-        fwrite(STDOUT, $this->prefix . " - " . $message . "\n");
-    }
+  public function put(string $message): void {
+    fwrite(STDOUT, $this->prefix." - ".$message."\n");
+  }
 
 }
