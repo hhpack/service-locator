@@ -12,7 +12,7 @@
   "require": {
     "hhvm": ">= 3.21.0",
     "hhpack/package": "^1.2",
-    "facebook/hhvm-autoload": "^1.4"
+    "hhvm/hhvm-autoload": "^1.5"
   },
   "require-dev": {
     "hackpack/hackunit": "^1.1"
@@ -28,6 +28,12 @@
       "HHPack\\ServiceLocator\\Test\\Fixtures\\": "test/fixtures"
     }
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/holyshared/HackUnit"
+    }
+  ],
   "scripts": {
     "test": "vendor/bin/hackunit test",
     "check": "./typecheck",
