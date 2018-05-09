@@ -11,10 +11,16 @@
 
 namespace HHPack\ServiceLocator;
 
-use ConstCollection;
+use Countable;
 
-interface ObjectRegistry extends ConstCollection<Pair<string, this::T>> {
+interface ObjectRegistry extends Countable {
 
   abstract const type T;
+
+  // From ConstCollection<+Te> excluding toDArray / toVArray methods
+  public function isEmpty(): bool;
+  public function count(): int;
+  public function items(): Iterable<Pair<string, this::T>>;
+
   public function lookup(string $name): this::T;
 }
