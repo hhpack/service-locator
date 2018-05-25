@@ -1,4 +1,4 @@
-FROM typesafety/typesafety:latest
+FROM holyshared/typesafety:latest
 ENV DEBIAN_FRONTEND noninteractive
 MAINTAINER Noritaka Horio <holy.shared.design@gmail.com>
 ARG hack_user
