@@ -19,4 +19,5 @@ ADD composer.json composer.json
 ADD hh_autoload.json hh_autoload.json
 ADD .hhconfig .hhconfig
 RUN sudo chown ${hack_user}:${hack_group} hh_autoload.json composer.json test src
-RUN composer install --no-interaction
+RUN composer config --global github-oauth.github.com ${GITHUB_CREDENTIALS_TOKEN} && \
+  composer install --no-interaction
