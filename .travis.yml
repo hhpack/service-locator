@@ -5,7 +5,7 @@ services:
 - docker
 before_script:
 - printenv | awk -F= '{if ($1 ~ /^(TRAVIS|GITHUB)/) print $1"="$2}' > .env
-- docker-compose build
+- docker-compose build --build-arg GITHUB_CREDENTIALS_TOKEN=$GITHUB_CREDENTIALS_TOKEN web
 script:
 - docker-compose run web typesafety --review --verbose
 - docker-compose run web composer test
