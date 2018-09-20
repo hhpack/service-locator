@@ -9,7 +9,7 @@ use HHPack\ServiceLocator\Module\{EnvironmentModule};
 
 function main(): void {
   $module =
-    new EnvironmentModule([Pair {'HHPack\\Service\\Example\\', __DIR__}]);
+    new EnvironmentModule([Pair { 'HHPack\\Service\\Example\\', __DIR__ }]);
 
   $locator = ServiceLocator::fromModule($module);
 

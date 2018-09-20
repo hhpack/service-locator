@@ -8,7 +8,7 @@ use HHPack\ServiceLocator\Test\Fixtures\{
   Logger,
   LoggerFactory,
   HttpClient,
-  HttpClientFactory
+  HttpClientFactory,
 };
 use HackPack\HackUnit\Contract\Assert;
 
@@ -18,9 +18,8 @@ final class ServiceLocatorTest {
 
   <<SuiteProvider('Factories')>>
   public static function createByItems(): this {
-    $locator = ServiceLocator::fromItems(
-      [new LoggerFactory(), new HttpClientFactory()],
-    );
+    $locator =
+      ServiceLocator::fromItems([new LoggerFactory(), new HttpClientFactory()]);
     return new static($locator);
   }
 

@@ -7,7 +7,7 @@ use HHPack\ServiceLocator\Test\Fixtures\{
   Logger,
   LoggerFactory,
   HttpClient,
-  HttpClientFactory
+  HttpClientFactory,
 };
 use HackPack\HackUnit\Contract\Assert;
 
@@ -33,9 +33,9 @@ final class ServiceRegistryTest {
 
   <<Test('Factories')>>
   public function lookupByClassNameString(Assert $assert): void {
-    $assert->mixed($this->container->lookup((string) Logger::class))
+    $assert->mixed($this->container->lookup((string)Logger::class))
       ->isTypeOf(LoggerFactory::class);
-    $assert->mixed($this->container->lookup((string) HttpClient::class))
+    $assert->mixed($this->container->lookup((string)HttpClient::class))
       ->isTypeOf(HttpClientFactory::class);
   }
 }

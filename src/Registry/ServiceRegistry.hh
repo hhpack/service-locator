@@ -54,9 +54,8 @@ final class ServiceRegistry implements ObjectRegistry {
   private function mapping(
     Traversable<this::T> $factories,
   ): ImmMap<string, this::T> {
-    $items =
-      ImmVector::fromItems($factories)
-        ->map(($factory) ==> $this->pairOfFactory($factory));
+    $items = ImmVector::fromItems($factories)
+      ->map(($factory) ==> $this->pairOfFactory($factory));
 
     return ImmMap::fromItems($items);
   }
@@ -69,7 +68,7 @@ final class ServiceRegistry implements ObjectRegistry {
       throw new LogicException('The return value can not be void');
     }
 
-    return Pair {(string) $type, $factory};
+    return Pair { (string)$type, $factory };
   }
 
 }

@@ -28,7 +28,7 @@ final class ServiceLocator implements Locator {
       return $this->cacheManager->get($name);
     }
 
-    $service = $this->lookupByName((string) $name);
+    $service = $this->lookupByName((string)$name);
 
     if (!($service instanceof $name)) {
       throw new InvalidServiceException(
@@ -58,7 +58,7 @@ final class ServiceLocator implements Locator {
   }
 
   public static function fromModule(Module $module): this {
-    return static::fromItems($module);
+    return static::fromItems($module->getIterator());
   }
 
 }
