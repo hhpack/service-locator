@@ -1,4 +1,4 @@
-<?hh //partial
+<?hh //strict
 
 namespace HHPack\ServiceLocator\Example;
 
@@ -7,7 +7,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 use HHPack\ServiceLocator\{ServiceLocator};
 use HHPack\ServiceLocator\Module\{EnvironmentModule};
 
-function main(): void {
+<<__Entrypoint>>
+function main(): noreturn {
   $module =
     new EnvironmentModule([Pair { 'HHPack\\Service\\Example\\', __DIR__ }]);
 
@@ -15,6 +16,6 @@ function main(): void {
 
   $logger = $locator->lookup(Logger::class);
   $logger->put('logger loaded');
-}
 
-main();
+  exit(0);
+}
