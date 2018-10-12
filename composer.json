@@ -30,7 +30,7 @@
     }
   },
   "scripts": {
-    "test": "vendor/bin/hackunit test",
+    "test": "vendor/bin/hacktest test",
     "check": "./typecheck",
     "example": "hhvm ./example/environment.hh"
   },
