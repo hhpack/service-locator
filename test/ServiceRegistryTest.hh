@@ -7,35 +7,36 @@ use HHPack\ServiceLocator\Test\Fixtures\{
   Logger,
   LoggerFactory,
   HttpClient,
-  HttpClientFactory
+  HttpClientFactory,
 };
-use HackPack\HackUnit\Contract\Assert;
+use type Facebook\HackTest\HackTest;
+use function Facebook\FBExpect\expect;
 
-final class ServiceRegistryTest {
-
-  public function __construct(private ServiceRegistry $container) {}
-
-  <<SuiteProvider('Factories')>>
-  public static function createByItems(): this {
-    $container =
-      new ServiceRegistry([new LoggerFactory(), new HttpClientFactory()]);
-    return new static($container);
+final class ServiceRegistryTest extends HackTest {
+  public function provideFactories(): vec<(ServiceRegistry)> {
+    return vec[tuple(
+      new ServiceRegistry([new LoggerFactory(), new HttpClientFactory()]),
+    )];
   }
 
-  <<Test('Factories')>>
-  public function container(Assert $assert): void {
-    $assert->int($this->container->count())->eq(2);
-    $assert->bool($this->container->isEmpty())->is(false);
+  <<DataProvider('provideFactories')>>
+  public function testContainer(ServiceRegistry $container): void {
+    expect($container->count())->toBeSame(2);
+    expect($container->isEmpty())->toBeFalse();
 
-    $items = ImmMap::fromItems($this->container->items());
-    $assert->int($this->container->count())->eq(2);
+    $items = ImmMap::fromItems($container->items());
+    expect($container->count())->toBeSame(2);
   }
 
-  <<Test('Factories')>>
-  public function lookupByClassNameString(Assert $assert): void {
-    $assert->mixed($this->container->lookup((string) Logger::class))
-      ->isTypeOf(LoggerFactory::class);
-    $assert->mixed($this->container->lookup((string) HttpClient::class))
-      ->isTypeOf(HttpClientFactory::class);
+  <<DataProvider('provideFactories')>>
+  public function testLookupByClassNameString(
+    ServiceRegistry $container,
+  ): void {
+    expect($container->lookup((string)Logger::class))->toBeInstanceOf(
+      LoggerFactory::class,
+    );
+    expect($container->lookup((string)HttpClient::class))->toBeInstanceOf(
+      HttpClientFactory::class,
+    );
   }
 }

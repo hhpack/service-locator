@@ -27,11 +27,10 @@ final class EnvironmentModule implements Module {
   public function getIterator(): Iterator<this::T> {
     $environment = \getenv('HHVM_ENV') ? \getenv('HHVM_ENV') : 'development';
 
-    $module =
-      $this->package
-        ->classes(package\implementsInterface(Module::class))
-        ->filter(package\startsWith(\ucfirst($environment)))
-        ->firstValue();
+    $module = $this->package
+      ->classes(package\implementsInterface(Module::class))
+      ->filter(package\startsWith(\ucfirst($environment)))
+      ->firstValue();
 
     if ($module === null) {
       throw new RuntimeException("Module not found for $environment");

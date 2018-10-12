@@ -8,39 +8,32 @@ use HHPack\ServiceLocator\Test\Fixtures\{
   Logger,
   LoggerFactory,
   HttpClient,
-  HttpClientFactory
+  HttpClientFactory,
 };
-use HackPack\HackUnit\Contract\Assert;
+use type Facebook\HackTest\HackTest;
+use function Facebook\FBExpect\expect;
 
-final class ServiceLocatorTest {
+final class ServiceLocatorTest extends HackTest {
+  public function provideFactories(): vec<(ServiceLocator)> {
+    return vec[tuple(
+      ServiceLocator::fromItems([new LoggerFactory(), new HttpClientFactory()]),
+    )];
+  }
 
-  public function __construct(private ServiceLocator $locator) {}
+  public function provideByModule(): vec<(ServiceLocator)> {
+    return vec[tuple(ServiceLocator::fromModuleName(TestModule::class))];
+  }
 
-  <<SuiteProvider('Factories')>>
-  public static function createByItems(): this {
-    $locator = ServiceLocator::fromItems(
-      [new LoggerFactory(), new HttpClientFactory()],
+  <<DataProvider('provideFactories')>>
+  public function testLookupByClassName(ServiceLocator $locator): void {
+    expect($locator->lookup(Logger::class))->toBeInstanceOf(Logger::class);
+    expect($locator->lookup(HttpClient::class))->toBeInstanceOf(
+      HttpClient::class,
     );
-    return new static($locator);
   }
 
-  <<SuiteProvider('TestModule')>>
-  public static function createByModule(): this {
-    $locator = ServiceLocator::fromModuleName(TestModule::class);
-    return new static($locator);
-  }
-
-  <<Test('Factories')>>
-  public function lookupByClassName(Assert $assert): void {
-    $assert->mixed($this->locator->lookup(Logger::class))
-      ->isTypeOf(Logger::class);
-    $assert->mixed($this->locator->lookup(HttpClient::class))
-      ->isTypeOf(HttpClient::class);
-  }
-
-  <<Test('TestModule')>>
-  public function fromModuleName(Assert $assert): void {
-    $assert->mixed($this->locator->lookup(Logger::class))
-      ->isTypeOf(Logger::class);
+  <<DataProvider('provideByModule')>>
+  public function testFromModuleName(ServiceLocator $locator): void {
+    expect($locator->lookup(Logger::class))->toBeInstanceOf(Logger::class);
   }
 }

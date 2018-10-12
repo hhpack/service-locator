@@ -9,7 +9,7 @@ format() {
 
   for FILE in $FILES
   do
-    hh_format $FILE -i
+    hackfmt $FILE -i
     echo $FILE
   done
   echo "Source code formatting is complete"

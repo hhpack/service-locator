@@ -25,11 +25,11 @@ final class CacheContainer implements CacheManager {
   }
 
   public function has<Tu as this::T>(classname<Tu> $name): bool {
-    return $this->services->containsKey((string) $name);
+    return $this->services->containsKey((string)$name);
   }
 
   public function get<Tu as this::T>(classname<Tu> $name): Tu {
-    $service = $this->services->at((string) $name);
+    $service = $this->services->at((string)$name);
 
     if (!($service instanceof $name)) {
       throw new InvalidServiceException(
@@ -41,7 +41,7 @@ final class CacheContainer implements CacheManager {
   }
 
   public function set<Tu as this::T>(classname<Tu> $name, Tu $service): void {
-    $this->services->set((string) $name, $service);
+    $this->services->set((string)$name, $service);
   }
 
 }
