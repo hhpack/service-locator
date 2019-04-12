@@ -1,8 +1,8 @@
-[src/**/*.hh]
+[src/**/*.hack]
 indent_style = space
 indent_size = 2
 
-[test/**/*.hh]
+[test/**/*.hack]
 indent_style = space
 indent_size = 2
 

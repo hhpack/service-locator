@@ -89,17 +89,17 @@ $logger = $locator->lookup(Logger::class);
 $logger->put('logger loaded');
 ```
 
-By executing the **environment.hh** of example, it can be confirmed.
+By executing the **environment.hack** of example, it can be confirmed.
 
 
 * development
 
-		$ HHVM_ENV=development hhvm example/environment.hh
+		$ HHVM_ENV=development hhvm example/environment.hack
 		$ development - logger loaded
 
 * production
 
-		$ HHVM_ENV=production hhvm example/environment.hh
+		$ HHVM_ENV=production hhvm example/environment.hack
 		$ production - logger loaded
 
 

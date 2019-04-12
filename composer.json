@@ -10,13 +10,13 @@
   ],
   "license": "MIT",
   "require": {
-    "hhvm": ">= 3.21.0",
-    "hhpack/package": "^1.2",
-    "hhvm/hhvm-autoload": "^1.5"
+    "hhvm": ">=3.21.0",
+    "hhpack/package": "^1.4",
+    "hhvm/hhvm-autoload": "^2.0"
   },
   "require-dev": {
-    "hhvm/hacktest": "^1.1",
-    "facebook/fbexpect": "^2.1"
+    "hhvm/hacktest": "^1.5",
+    "facebook/fbexpect": "^2.5"
   },
   "autoload": {
     "psr-4": {
@@ -32,7 +32,7 @@
   "scripts": {
     "test": "vendor/bin/hacktest test",
     "check": "./typecheck",
-    "example": "hhvm ./example/environment.hh"
+    "example": "hhvm ./example/environment.hack"
   },
   "minimum-stability": "stable"
 }

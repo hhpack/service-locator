@@ -1,5 +1,3 @@
-<?hh //strict
-
 namespace HHPack\ServiceLocator\Test;
 
 use HHPack\ServiceLocator\Registry\{ServiceRegistry};
@@ -9,7 +7,7 @@ use HHPack\ServiceLocator\Test\Fixtures\{
   HttpClient,
   HttpClientFactory,
 };
-use type Facebook\HackTest\HackTest;
+use type Facebook\HackTest\{HackTest, DataProvider};
 use function Facebook\FBExpect\expect;
 
 final class ServiceRegistryTest extends HackTest {
