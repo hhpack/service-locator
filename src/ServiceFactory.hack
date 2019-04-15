@@ -1,5 +1,3 @@
-<?hh //strict
-
 /**
  * This file is part of hhpack/service-locator.
  *
@@ -11,4 +9,7 @@
 
 namespace HHPack\ServiceLocator;
 
-interface Service {}
+interface ServiceFactory {
+  abstract const type T as Service;
+  public function createService(Locator $locator): this::T;
+}

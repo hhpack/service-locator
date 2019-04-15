@@ -1,5 +1,3 @@
-<?hh //strict
-
 /**
  * This file is part of hhpack/service-locator.
  *
@@ -9,9 +7,8 @@
  * with this source code in the file LICENSE.
  */
 
-namespace HHPack\ServiceLocator;
+namespace HHPack\ServiceLocator\Registry;
 
-interface Locator {
-  abstract const type T as Service;
-  public function lookup<Tu as this::T>(classname<Tu> $name): Tu;
-}
+use RuntimeException;
+
+final class ServiceNotRegisteredException extends RuntimeException {}

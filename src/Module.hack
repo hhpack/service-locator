@@ -1,5 +1,3 @@
-<?hh //strict
-
 /**
  * This file is part of hhpack/service-locator.
  *
@@ -11,6 +9,10 @@
 
 namespace HHPack\ServiceLocator;
 
-use RuntimeException;
+use HHPack\ServiceLocator\{ServiceFactory};
+use IteratorAggregate;
 
-final class InvalidServiceException extends RuntimeException {}
+interface Module extends IteratorAggregate<this::T> {
+  const type T = ServiceFactory;
+  public function getIterator(): Iterator<this::T>;
+}

@@ -1,5 +1,3 @@
-<?hh //strict
-
 /**
  * This file is part of hhpack/service-locator.
  *

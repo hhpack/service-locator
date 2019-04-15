@@ -1,5 +1,3 @@
-<?hh //strict
-
 /**
  * This file is part of hhpack/service-locator.
  *
@@ -68,7 +66,7 @@ final class ServiceRegistry implements ObjectRegistry {
       throw new LogicException('The return value can not be void');
     }
 
-    return Pair { (string)$type, $factory };
+    return Pair {(string)$type, $factory};
   }
 
 }
