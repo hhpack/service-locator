@@ -11,12 +11,12 @@
   "license": "MIT",
   "require": {
     "hhvm": ">=3.21.0",
-    "hhpack/package": "^1.4",
+    "hhpack/package": "^1.5",
     "hhvm/hhvm-autoload": "^2.0"
   },
   "require-dev": {
-    "hhvm/hacktest": "^1.5",
-    "facebook/fbexpect": "^2.5"
+    "hhvm/hacktest": "^1.6",
+    "facebook/fbexpect": "^2.6"
   },
   "autoload": {
     "psr-4": {
